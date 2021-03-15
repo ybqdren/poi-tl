@@ -87,6 +87,8 @@ public class Configure implements Cloneable {
      * if & for each
      * <p>
      * eg. {{?user}} Hello, World {{/user}}
+	 *
+	 * {{?x}}{{s}}{{/x}}
      * </p>
      */
     protected Pair<Character, Character> iterable = Pair.of(GramerSymbol.ITERABLE_START.getSymbol(),
@@ -94,16 +96,19 @@ public class Configure implements Cloneable {
 
     /**
      * tag prefix
+	 * 一个完整的标签的前缀
      */
     protected String gramerPrefix = "{{";
 
     /**
      * tag suffix
+	 * 一个完整的标签的后缀
      */
     protected String gramerSuffix = "}}";
 
     /**
      * tag regular expression
+	 * 标签的正则表达式，此处使用默认正则规则
      */
     protected String grammerRegex = DEFAULT_GRAMER_REGEX;
 

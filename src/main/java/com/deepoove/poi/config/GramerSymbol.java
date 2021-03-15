@@ -48,6 +48,9 @@ public enum GramerSymbol {
      */
     NUMBERING('*'),
 
+
+	/// word标签中用于区块条件判断的几个符号 ///
+
     /**
      * Nested/Merge/Include/Reference in the template
      */
