@@ -45,12 +45,40 @@ public interface BodyContainer extends ParentContext {
      * @param ctp paragraph
      * @return the position of paragraph
      */
-    default int getPosOfParagraphCTP(CTP ctp) {
+
+	/**
+	 * 获取CTP在段落中的下标位置
+	 *
+	 * 传入参数为一个 org.openxmlformats.schemas.wordprocessingml.x2006.main.ctp接口实现类
+	 * CTP是一POI对于操作ooxml规范下xml文件标签属性封装的接口
+	 *
+	 * @param ctp
+	 * @return
+	 */
+	default int getPosOfParagraphCTP(CTP ctp) {
+		// org.apache.poi.xwpf.usermodel.IBodyElement -> poi中对于ooxml规范下xml文件中所有标签的封装类
+		// 通过 IBody getBody() 方法可以获取到文档xml化后所有的标签信息
         IBodyElement current;
+
+        // getTarget().getBodyElements 是实现IBody接口的一个方法 作用是按照文本的顺序返回段落表格
+		// 返回对象为 IBodyElement类型的List集合 也就是此处的bodyElements
         List<IBodyElement> bodyElements = getTarget().getBodyElements();
+
+		// 对于获取到的List<IBodyElement> 对象进行遍历
         for (int i = 0; i < bodyElements.size(); i++) {
+        	// 将i个IBodyElement对象从bodyElements中获取出来
             current = bodyElements.get(i);
+
+			// 将刚才获取到的IBodyElements对象的类型 进行判断
+			/**
+			 * 在BodyElementType中内置了三种类型
+			 *     CONTENTCONTROL （翻译软件为内容控制 具体不可查 需要后续再观察）
+			 *     PARAGRAPH（段落）
+			 *     TABLE（表格）
+			 */
             if (current.getElementType() == BodyElementType.PARAGRAPH) {
+            	// 如果是段落 继续进if判断
+				// 判断当前段落中的CTP信息 返回下标i
                 if (((XWPFParagraph) current).getCTP().equals(ctp)) {
                     return i;
                 }

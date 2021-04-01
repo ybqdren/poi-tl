@@ -28,6 +28,11 @@ import com.deepoove.poi.template.run.RunTemplate;
 /**
  * Experimental: Table of contents
  */
+
+
+/**
+ * 从名字判定 应该是一个与目录有关的插件
+ */
 public class TOCRenderPolicy implements RenderPolicy {
 
     @Override

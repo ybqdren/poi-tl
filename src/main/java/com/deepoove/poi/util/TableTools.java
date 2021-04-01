@@ -45,7 +45,7 @@ import com.deepoove.poi.data.style.RowStyle;
 import com.deepoove.poi.data.style.TableStyle;
 
 /**
- * XWPFTable Tools
+ * XWPFTable Tools -> 一个poi XWPFTable API进行封装的对表格进行操作的工具
  * 
  * @author Sayi
  * @version 1.4.0
