@@ -21,6 +21,7 @@ public class HackLoopTableRenderPolicyTest {
 
     @BeforeEach
     public void init() {
+    	// 设置第一个数据 goods
         List<Goods> goods = new ArrayList<>();
         Goods good = new Goods();
         good.setCount(4);
@@ -36,6 +37,7 @@ public class HackLoopTableRenderPolicyTest {
         goods.add(good);
         data.setGoods(goods);
 
+        // 设置第二个数据 labors
         List<Labor> labors = new ArrayList<>();
         Labor labor = new Labor();
         labor.setCategory("油漆工");

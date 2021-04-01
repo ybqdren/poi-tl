@@ -32,7 +32,9 @@ import com.deepoove.poi.xwpf.BodyContainerFactory;
 
 /**
  * Document Render
- * 
+ *
+ * 渲染多个段落和表格
+ *
  * @author Sayi
  *
  */
@@ -55,12 +57,21 @@ public class DocumentRenderPolicy extends AbstractRenderPolicy<DocumentRenderDat
 
     public static class Helper {
         public static void renderDocument(XWPFRun run, DocumentRenderData data) throws Exception {
+        	// 获取content
             List<RenderData> contents = data.getContents();
+
+            // 获取一个bodyContainer bodyContainer可以对poi封装文档对象进行快捷操作
             BodyContainer bodyContainer = BodyContainerFactory.getBodyContainer(run);
+
             for (RenderData item : contents) {
-                XWPFParagraph paragraph = bodyContainer.insertNewParagraph(run);
+                // 往bodyContainer中插入一个段落
+            	XWPFParagraph paragraph = bodyContainer.insertNewParagraph(run);
                 XWPFRun createRun = paragraph.createRun();
+
+                // 给当前run设置style格式
                 StyleUtils.styleRun(createRun, run);
+
+                // 通过判断不同的类型 来 使用不同的方法
                 if (item instanceof ParagraphRenderData) {
                     ParagraphRenderPolicy.Helper.renderParagraph(createRun, (ParagraphRenderData) item);
                 } else if (item instanceof TableRenderData) {

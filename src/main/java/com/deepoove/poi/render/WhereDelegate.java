@@ -33,6 +33,8 @@ import com.deepoove.poi.policy.TextRenderPolicy;
 /**
  * The delegation of the current location provides more methods of operating the
  * current location.
+ *
+ * 一个提供了操作当前位置很多方法的当前位置的代表
  * 
  * @author Sayi
  * @since 1.5.1

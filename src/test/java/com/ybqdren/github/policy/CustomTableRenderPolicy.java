@@ -10,8 +10,8 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 
 /**
- * @Author WenZhao <withzhaowen@126com>
- * @GiteHub https://github.com/ybqdren
+ * @Author ZhaoWen <withzhaowen@126com>
+ * @GitHub https://github.com/ybqdren
  * @Date 2021/4/1 10:50
  * @Description
  **/

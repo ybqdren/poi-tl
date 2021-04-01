@@ -34,6 +34,13 @@ import com.deepoove.poi.xwpf.BodyContainerFactory;
  * 
  * @author Sayi
  */
+
+/**
+ * poi-tl提供了抽象模板类AbstractRenderPolicy
+ * 定义了一些骨架步骤并且将数据模型的校验和渲染逻辑分开，使用泛型约束数据类型
+ * 让插件开发起来更简单
+ * @param <T>
+ */
 public abstract class AbstractRenderPolicy<T> implements RenderPolicy {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());

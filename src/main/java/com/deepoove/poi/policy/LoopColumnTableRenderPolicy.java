@@ -77,17 +77,36 @@ public class LoopColumnTableRenderPolicy implements RenderPolicy {
         this.onSameLine = onSameLine;
     }
 
+    // 实现一个遍历列的插件
+	// ElementTemplate 当前标签位置
+	// data 数据模型
+	// XWPFTemplate 整个模板
     @Override
     public void render(ElementTemplate eleTemplate, Object data, XWPFTemplate template) {
+    	// 向下转换 父模板转为子模板 RunTemplate相比EleTemplate多声明了一个XWPRun类型的对象 可以用来设置XWPRun类型的对象
         RunTemplate runTemplate = (RunTemplate) eleTemplate;
+
+        // 从RunTemplate中获取XWPRun对象 也即为从模板文件中获取一个可操作行
         XWPFRun run = runTemplate.getRun();
+
         try {
+        	// 1.调用TableTools中的isInsideTable方法来判断传入的XWPFRun对象是否为一个表格
             if (!TableTools.isInsideTable(run)) {
+            	// 如果传入的不是一个表格就报异常 IllegalStateException
                 throw new IllegalStateException(
                         "The template tag " + runTemplate.getSource() + " must be inside a table");
             }
+
+            // 使用poi API 来获取表格单元格对象
+			// XWPFTableCell -> 获取有实际内容的单元格
             XWPFTableCell tagCell = (XWPFTableCell) ((XWPFParagraph) run.getParent()).getBody();
+
+            // 一行中(XWPFTableRow)有很多单元格（XWPFTableCell）
+			// 一个表(XWPFTable)中有很多行（XWPFTableRow）
+			// 行信息通常指包括 size 和 style
             XWPFTable table = tagCell.getTableRow().getTable();
+
+            // 清洗XWPRun对象中的Text数据
             run.setText("", 0);
 
             int templateColIndex = getTemplateColIndex(tagCell);
