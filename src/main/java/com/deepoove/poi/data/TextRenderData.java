@@ -27,10 +27,12 @@ public class TextRenderData implements RenderData {
 
     private static final long serialVersionUID = 1L;
 
+    // 文字的样式
     protected Style style;
 
     /**
      * \n means line break
+	 * 文本内容 以\n结束
      */
     protected String text;
 
@@ -41,6 +43,9 @@ public class TextRenderData implements RenderData {
         this.text = text;
     }
 
+    // 构造方法 传入颜色和文本内容
+	// 将颜色放入style的颜色属性中
+	// 此处style使用到了bulder类似的构造，可以深入进去看看
     public TextRenderData(String color, String text) {
         this.style = Style.builder().buildColor(color).build();
         this.text = text;

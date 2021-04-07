@@ -21,6 +21,7 @@ import java.util.Map;
 public enum XWPFHighlightColor {
 
     // STHighlightColor
+	// 设定一个枚举类型 用来指定不同的颜色
 
     BLACK(1),
     BLUE(2),

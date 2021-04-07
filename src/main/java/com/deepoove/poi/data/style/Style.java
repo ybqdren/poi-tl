@@ -31,23 +31,45 @@ public class Style implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // 样式.颜色
     private String color;
+
+    // 样式.字体样式
     private String fontFamily;
+
+    // 字体大小
     private double fontSize;
+
+    // 字体是否为粗体
     private Boolean isBold;
+
+    // 字体是否为斜体
     private Boolean isItalic;
+
+    // 是否有删除线
     private Boolean isStrike;
+
+	/**
+	 * 是否有下划线
+	 * UnderlinePatterns 来自POI{@link UnderlinePatterns}
+	 */
     private UnderlinePatterns underlinePatterns;
+
+    // 设置下划线的颜色
     private String underlineColor;
+
+    // 设置字体高亮的颜色
     private XWPFHighlightColor highlightColor;
 
     /**
      * point unit(pt)
+	 * 字母间距
      */
     private int characterSpacing;
 
     /**
-     * baseline, superscript, subscript
+     * baseline 基线, superscript 上标, subscript 下标
+	 *垂直对齐
      */
     private String vertAlign;
 
@@ -155,6 +177,7 @@ public class Style implements Serializable {
         this.vertAlign = vertAlign;
     }
 
+    // 设定一个Style的构造器Builder
     public static final class StyleBuilder {
 
         private Style style;
@@ -163,6 +186,8 @@ public class Style implements Serializable {
             style = new Style();
         }
 
+        // 恍然大悟 原来在方法中定义内容方法可以达到看起来那种链式的效果 链式效果真是太优雅了
+		// 设置颜色
         public StyleBuilder buildColor(String color) {
             style.setColor(color);
             return this;
