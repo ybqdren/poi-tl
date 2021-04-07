@@ -24,6 +24,8 @@ import com.deepoove.poi.data.style.TableStyle;
  * Data for table template
  * 
  * @author Sayi
+ *
+ * TableRenderData Class 对于表格的封装
  */
 public class TableRenderData implements RenderData {
 

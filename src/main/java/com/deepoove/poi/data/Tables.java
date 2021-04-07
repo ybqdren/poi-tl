@@ -35,7 +35,12 @@ public class Tables {
     private Tables() {
     }
 
-    public static TableBuilder of(RowRenderData... row) {
+	/**
+	 * ... 表示 可变长参数，就是这个位置可以传入任意个该类型参数,简单来说就是个数组
+	 * @param row
+	 * @return
+	 */
+	public static TableBuilder of(RowRenderData... row) {
         TableBuilder inst = ofFitWidth();
         if (null != row) {
             Arrays.stream(row).forEach(inst::addRow);
@@ -95,6 +100,13 @@ public class Tables {
         return new TableBuilder().percentOrAutoWidth("auto");
     }
 
+	/**
+	 *
+	 * @param row
+	 * @return
+	 *
+	 * 传入存储着行的数组
+	 */
     public static TableRenderData create(RowRenderData... row) {
         return of(row).create();
     }
@@ -105,6 +117,7 @@ public class Tables {
      */
     public static class TableBuilder implements RenderDataBuilder<TableRenderData> {
 
+    	// 声明一个TableRenderData类型
         private TableRenderData data;
 
         private TableBuilder() {
@@ -127,7 +140,14 @@ public class Tables {
         public TableBuilder fitWidth(int[] colWidthsPercent) {
             TableStyle style = getTableStyle();
             if (null != colWidthsPercent) {
-                int sum = Arrays.stream(colWidthsPercent).sum();
+				/**
+				 * 这种风格将要处理的元素集合看作一种流， 流在管道中传输， 并且可以在管道的节点上进行处理， 比如筛选， 排序，聚合等。
+				 *
+				 * 元素流在管道中经过中间操作（intermediate operation）的处理，最后由最终操作(terminal operation)得到前面处理的结果
+				 *
+				 * 此处为求colWidthsPercent 数组元素的总数目
+				 */
+				int sum = Arrays.stream(colWidthsPercent).sum();
                 if (sum != 100) {
                     throw new IllegalArgumentException("The sum of the percentages must be 100");
                 }
@@ -188,7 +208,11 @@ public class Tables {
             return this;
         }
 
-        @Override
+		/**
+		 * 返回TableRenderData{@link TableRenderData}对象数据
+		 * @return
+		 */
+		@Override
         public TableRenderData create() {
             return data;
         }

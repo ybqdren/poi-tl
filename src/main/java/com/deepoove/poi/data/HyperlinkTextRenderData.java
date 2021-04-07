@@ -23,6 +23,14 @@ import com.deepoove.poi.data.style.Style;
  * hyper link text
  * 
  * @author Sayi
+ *
+ * HyperlinkTextRenderData Class:
+ * 一个属性：
+ * 		url {@link String}
+ * 两个构造方法：
+ * 		HyperlinkTextRenderData()
+ * 		HyperlinkTextRenderData(String text,String url)
+ * 剩下的为getter/setter方法和toString方法的重写形式
  */
 public class HyperlinkTextRenderData extends TextRenderData {
 

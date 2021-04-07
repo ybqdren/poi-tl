@@ -22,6 +22,17 @@ import com.deepoove.poi.data.style.Style;
  * 
  * @author Sayi
  *
+ * TextRenderData对象：
+ * 包含两个属性：
+ * 		style {@link Style}
+ * 		text  {@link String}
+ * 四个构造方法：
+ * 		TextRenderData
+ * 		TextRenderData(String text)
+ * 		TextRenderData(String color,String text)
+ * 		TextRenderData(String text,String style)
+ * 剩下为getter/setter方法和toString方法重写形式
+ *
  */
 public class TextRenderData implements RenderData {
 

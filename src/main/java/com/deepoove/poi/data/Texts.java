@@ -24,6 +24,8 @@ import com.deepoove.poi.data.style.Style;
  * 
  * @author Sayi
  *
+ *
+ * 一个
  */
 public final class Texts {
 
@@ -36,7 +38,7 @@ public final class Texts {
 
     /**
      * Builder to build {@link TextRenderData}
-     *
+     * 使用TextBuilder或获得一个TextRenderData对象{@link TextRenderData}或者HyperlinkTextData对象{@link HyperlinkTextRenderData}
      */
     public static class TextBuilder implements RenderDataBuilder<TextRenderData> {
         private String text;
@@ -137,13 +139,17 @@ public final class Texts {
             return link(sb.toString());
         }
 
+        // 实现RenderDataBuilder后的重写的方法
+		// 返回TextRenderData对象 或者 HyperlinkTextRenderData对象
         @Override
         public TextRenderData create() {
             TextRenderData data = null;
             if (null != url) {
+            	// 如果data是一个链接 就返回一个HyperlinkTextRenderData对象
                 data = new HyperlinkTextRenderData(text, url);
                 data.setStyle(style);
             } else {
+            	// 如果data不是一个链接
                 data = new TextRenderData(text, style);
             }
             return data;

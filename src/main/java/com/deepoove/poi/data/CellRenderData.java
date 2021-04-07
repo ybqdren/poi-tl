@@ -23,6 +23,13 @@ import com.deepoove.poi.data.style.CellStyle;
 /**
  * @author Sayi
  *
+ * CellRenderData Class 一个与表格单元格有关的类
+ * 两个属性：
+ * 		paragraphs {@link List<ParagraphRenderData>}
+ * 		cellStyle {@link CellStyle}
+ *
+ * 	一个额外方法：
+ * 		addParagraph(ParagraphRenderData para)
  */
 public class CellRenderData implements RenderData {
 
@@ -38,7 +45,13 @@ public class CellRenderData implements RenderData {
         this.paragraphs = paragraphs;
     }
 
-    public CellRenderData addParagraph(ParagraphRenderData para) {
+	/**
+	 * 将{@link ParagraphRenderData} ParagraphRenderData 对象放入List<ParagraphRenderData>
+	 *  在poi-tl中，构造表格最小单位是段落，也即ParagraphRenderData
+	 * @param para
+	 * @return
+	 */
+	public CellRenderData addParagraph(ParagraphRenderData para) {
         this.paragraphs.add(para);
         return this;
     }
